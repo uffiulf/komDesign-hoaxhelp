@@ -1,4 +1,51 @@
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+
+// Fix for default markers in React Leaflet
+delete L.Icon.Default.prototype._getIconUrl;
+L.Icon.Default.mergeOptions({
+  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
+  iconUrl: require('leaflet/dist/images/marker-icon.png'),
+  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
+});
+
 export default function MapSection() {
+  const scamLocations = [
+    {
+      id: 1,
+      name: 'Oslo',
+      position: [59.9139, 10.7522],
+      date: '27. august',
+      description: 'Falske SMS-er om «energistøtte» fra «Oslo kommune»',
+      type: 'SMS-kampanje'
+    },
+    {
+      id: 2,
+      name: 'Sarpsborg',
+      position: [59.2833, 11.1167],
+      date: '14. september',
+      description: 'E-post om «krisehjelp» med kommunelogo',
+      type: 'E-post'
+    },
+    {
+      id: 3,
+      name: 'Fredrikstad',
+      position: [59.2167, 10.9500],
+      date: '29. september',
+      description: 'Falsk søknadsside for strømstøtte med BankID-login',
+      type: 'Falsk nettside'
+    },
+    {
+      id: 4,
+      name: 'Halden',
+      position: [59.1167, 11.3833],
+      date: '29. september',
+      description: 'Fysiske svindlere utga seg for å være fra helsetjenesten',
+      type: 'Fysisk besøk'
+    }
+  ];
+
   return (
     <section className='scene'>
       <div className='left'>
@@ -24,29 +71,77 @@ export default function MapSection() {
         </p>
       </div>
       <div className='right sticky'>
-        <iframe 
-          title='Infowiz Kart - Svindelhendelser' 
-          src='about:blank' 
-          width='100%' 
-          height='70%' 
-          style={{
-            border: 'none',
-            borderRadius: '16px',
+        <div className='card' style={{padding: '0', overflow: 'hidden'}}>
+          <div style={{
+            padding: '1.5rem',
             background: 'rgba(255,255,255,0.05)',
-            minHeight: '400px'
-          }} 
-        />
-        <div style={{
-          marginTop: '1rem',
-          padding: '1rem',
-          background: 'rgba(255,255,255,0.05)',
-          borderRadius: '8px',
-          fontSize: '0.8rem',
-          color: '#888',
-          textAlign: 'center'
-        }}>
-          <i className="fas fa-map" style={{marginRight: '5px'}}></i>
-          Interaktivt kart kommer snart
+            borderRadius: '20px 20px 0 0'
+          }}>
+            <h3 style={{marginBottom: '0.5rem', color: '#e0e0e0', fontSize: '1.1rem'}}>
+              <i className="fas fa-map-marked-alt" style={{marginRight: '8px', color: '#ef4444'}}></i>
+              Interaktivt kart
+            </h3>
+            <p style={{fontSize: '0.8rem', color: '#888', margin: 0}}>
+              Klikk på markørene for å se detaljer om hver hendelse
+            </p>
+          </div>
+          
+          <div style={{
+            height: '400px',
+            width: '100%',
+            background: 'rgba(255,255,255,0.02)'
+          }}>
+            <MapContainer
+              center={[59.4, 11.0]}
+              zoom={8}
+              style={{ height: '100%', width: '100%' }}
+              className="map-container"
+            >
+              <TileLayer
+                url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+              />
+              {scamLocations.map((location) => (
+                <Marker key={location.id} position={location.position}>
+                  <Popup>
+                    <div style={{color: '#333', minWidth: '200px'}}>
+                      <h4 style={{margin: '0 0 0.5rem 0', color: '#ef4444'}}>
+                        {location.name}
+                      </h4>
+                      <p style={{margin: '0 0 0.5rem 0', fontSize: '0.9rem', fontWeight: 'bold'}}>
+                        {location.date}
+                      </p>
+                      <p style={{margin: '0 0 0.5rem 0', fontSize: '0.85rem'}}>
+                        {location.description}
+                      </p>
+                      <div style={{
+                        padding: '0.3rem 0.6rem',
+                        background: '#ef4444',
+                        color: 'white',
+                        borderRadius: '4px',
+                        fontSize: '0.8rem',
+                        display: 'inline-block'
+                      }}>
+                        {location.type}
+                      </div>
+                    </div>
+                  </Popup>
+                </Marker>
+              ))}
+            </MapContainer>
+          </div>
+          
+          <div style={{
+            padding: '1rem',
+            background: 'rgba(255,255,255,0.05)',
+            borderRadius: '0 0 20px 20px',
+            fontSize: '0.8rem',
+            color: '#888',
+            textAlign: 'center'
+          }}>
+            <i className="fas fa-info-circle" style={{marginRight: '5px'}}></i>
+            Data basert på rapporter fra kommuner og politiet, høst 2024
+          </div>
         </div>
       </div>
     </section>

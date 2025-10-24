@@ -202,3 +202,21 @@ iframe {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+/* Leaflet map styling */
+.map-container {
+  border-radius: 0 0 20px 20px;
+}
+
+.leaflet-container {
+  background: #0b0b0b !important;
+}
+
+.leaflet-popup-content-wrapper {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border-radius: 8px !important;
+}
+
+.leaflet-popup-tip {
+  background: rgba(255, 255, 255, 0.95) !important;
+}

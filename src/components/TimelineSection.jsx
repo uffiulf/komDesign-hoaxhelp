@@ -1,4 +1,87 @@
+import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, TimeScale } from 'chart.js';
+import { Line } from 'react-chartjs-2';
+import 'chartjs-adapter-date-fns';
+
+ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, TimeScale);
+
 export default function TimelineSection() {
+  const timelineData = {
+    labels: ['27. aug', '29. aug', '14. sep', '29. sep'],
+    datasets: [
+      {
+        label: 'Antall svindelforsøk',
+        data: [
+          { x: '2024-08-27', y: 1 },
+          { x: '2024-08-29', y: 2 },
+          { x: '2024-09-14', y: 3 },
+          { x: '2024-09-29', y: 4 }
+        ],
+        borderColor: '#8b5cf6',
+        backgroundColor: 'rgba(139, 92, 246, 0.1)',
+        borderWidth: 3,
+        pointBackgroundColor: '#8b5cf6',
+        pointBorderColor: '#ffffff',
+        pointBorderWidth: 2,
+        pointRadius: 8,
+        tension: 0.4
+      }
+    ]
+  };
+
+  const options = {
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: false
+      },
+      tooltip: {
+        backgroundColor: 'rgba(0, 0, 0, 0.8)',
+        titleColor: '#ffffff',
+        bodyColor: '#ffffff',
+        borderColor: '#8b5cf6',
+        borderWidth: 1,
+        callbacks: {
+          title: function(context) {
+            const dates = ['Oslo - 27. august', 'Fredrikstad - 29. august', 'Sarpsborg - 14. september', 'Halden - 29. september'];
+            return dates[context[0].dataIndex];
+          },
+          label: function(context) {
+            return `Antall registrerte forsøk: ${context.parsed.y}`;
+          }
+        }
+      }
+    },
+    scales: {
+      x: {
+        type: 'time',
+        time: {
+          unit: 'day',
+          displayFormats: {
+            day: 'dd. MMM'
+          }
+        },
+        grid: {
+          color: 'rgba(255, 255, 255, 0.1)'
+        },
+        ticks: {
+          color: '#a0a0a0'
+        }
+      },
+      y: {
+        beginAtZero: true,
+        max: 5,
+        grid: {
+          color: 'rgba(255, 255, 255, 0.1)'
+        },
+        ticks: {
+          color: '#a0a0a0',
+          stepSize: 1
+        }
+      }
+    }
+  };
+
   return (
     <section className='scene'>
       <div className='left'>
@@ -113,15 +196,28 @@ export default function TimelineSection() {
           <p style={{fontSize: '0.9rem', color: '#a0a0a0', marginBottom: '1rem'}}>
             Interaktiv tidslinje som viser spredningen av svindelen
           </p>
+          
+          <div style={{
+            height: '300px',
+            width: '100%',
+            background: 'rgba(255,255,255,0.02)',
+            borderRadius: '12px',
+            padding: '1rem',
+            marginBottom: '1rem'
+          }}>
+            <Line data={timelineData} options={options} />
+          </div>
+
           <div style={{
             padding: '1rem',
-            background: 'rgba(255,255,255,0.05)',
+            background: 'rgba(139, 92, 246, 0.1)',
             borderRadius: '8px',
             fontSize: '0.8rem',
-            color: '#888'
+            color: '#a0a0a0',
+            border: '1px solid rgba(139, 92, 246, 0.2)'
           }}>
-            <i className="fas fa-chart-line" style={{marginRight: '5px'}}></i>
-            Tidslinje-graf kommer snart
+            <i className="fas fa-chart-line" style={{marginRight: '5px', color: '#8b5cf6'}}></i>
+            Hover over punktene for å se detaljer om hver hendelse
           </div>
         </div>
       </div>
