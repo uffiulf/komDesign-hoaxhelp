@@ -4,15 +4,12 @@ export default function Hero() {
       <div className='left'>
         <h1>Når hjelpen ikke er ekte</h1>
         <p>
-          En ny bølge av sofistikerte svindelforsøk rammer folk i hele Norge – både digitalt og fysisk. 
-          Noen får e-poster eller SMS fra det som ser ut som kommunen, NAV eller helsevesenet. 
-          Andre får uventet besøk av personer som utgir seg for å være hjemmehjelpere eller inspektører. 
-          Felles for dem alle er at svindlerne spiller på tillit og nød – og mange lar seg lure.
+          Fra januar 2023 til februar 2025 har svindlere i Norge tappet eldre beboere for titalls millioner kroner ved å utgi seg for å være politi, hjemmehjelpere, el-inspektører og bankansatte. 
+          De fleste ofre er kvinner mellom 60 og 90 år, og svindlerne kombinerer telefonbedrageri med fysiske besøk for å virke mer troverdig.
         </p>
         <p>
-          I løpet av sensommeren 2024 ble flere kommuner kontaktet av innbyggere som trodde de hadde fått hjelp. 
-          I virkeligheten ble både personopplysninger og BankID-informasjon stjålet. 
-          Svindlerne bruker falske logoer, etterligner offisielle kommunikasjoner og utnytter folks ønske om å få hjelp.
+          I Drammen ble en 80-årig kvinne frastjålet kontanter og smykker av en falsk hjemmehjelper. I Drøbak ble et ektepar lurt for 32 millioner kroner av falske håndverkere. 
+          I Hamar ble eldre kvinner ringt opp av «politiinspektører» som ba om BankID-informasjon og sendte falske patruljer for å hente bankkort.
         </p>
         <p>
           <i className="fas fa-exclamation-triangle" style={{color: '#fbbf24', marginRight: '8px'}}></i>

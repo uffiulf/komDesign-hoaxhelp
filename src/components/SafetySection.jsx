@@ -4,8 +4,8 @@ export default function SafetySection() {
       <div className='left'>
         <h2>Slik unngår du å bli lurt</h2>
         <p>
-          Ekspertene sier at svindlerne spiller på følelser og tillit.  
-          Her er rådene du bør følge før du trykker på noe – uansett hvor ekte det ser ut:
+          Basert på politirapporter og kommunale advarsler fra 2023-2025 har ekspertene identifisert de vanligste svindelmetodene. 
+          Her er de viktigste rådene for å beskytte deg mot svindlere som utgir seg for å være autoritetspersoner:
         </p>
         
         <div style={{marginTop: '2rem'}}>
@@ -17,12 +17,12 @@ export default function SafetySection() {
             borderRadius: '12px'
           }}>
             <h3 style={{color: '#10b981', marginBottom: '1rem', fontSize: '1.2rem'}}>
-              <i className="fas fa-search" style={{marginRight: '8px'}}></i>
-              Sjekk alltid avsender
+              <i className="fas fa-phone-slash" style={{marginRight: '8px'}}></i>
+              Politiet og banker ringer aldri om BankID
             </h3>
             <p style={{margin: 0, fontSize: '0.95rem'}}>
-              Offentlige etater sender aldri lenker via SMS. Kontroller alltid avsenderadressen
-              og sammenlign med offisielle nettsider. Vær mistenksom mot ukjente numre.
+              Ekte politi og banker spør aldri om BankID-informasjon over telefon. Hvis noen ringer og ber om dette, 
+              er det alltid svindel. Legg på umiddelbart og kontakt politiet på 02800.
             </p>
           </div>
 
@@ -34,12 +34,12 @@ export default function SafetySection() {
             borderRadius: '12px'
           }}>
             <h3 style={{color: '#ef4444', marginBottom: '1rem', fontSize: '1.2rem'}}>
-              <i className="fas fa-ban" style={{marginRight: '8px'}}></i>
-              Ikke del BankID eller koder
+              <i className="fas fa-id-card" style={{marginRight: '8px'}}></i>
+              Krev alltid legitimasjon ved hjemmebesøk
             </h3>
             <p style={{margin: 0, fontSize: '0.95rem'}}>
-              Uansett hva du blir fortalt. Legitime organisasjoner vil aldri be om
-              BankID-informasjon via telefon eller e-post. Dette er alltid svindel.
+              Ekte hjemmehjelpere, el-inspektører og kommunale ansatte bærer alltid ID-kort og varsler på forhånd. 
+              Krev å se legitimasjon og ring kommunen for å bekrefte identiteten.
             </p>
           </div>
 
@@ -51,12 +51,12 @@ export default function SafetySection() {
             borderRadius: '12px'
           }}>
             <h3 style={{color: '#3b82f6', marginBottom: '1rem', fontSize: '1.2rem'}}>
-              <i className="fas fa-phone" style={{marginRight: '8px'}}></i>
-              Kontakt kommunen direkte
+              <i className="fas fa-exclamation-triangle" style={{marginRight: '8px'}}></i>
+              Vær skeptisk til uanmeldte besøk
             </h3>
             <p style={{margin: 0, fontSize: '0.95rem'}}>
-              Via offisielle nettsider eller telefon. Ring tilbake på offisielle numre
-              fra kommunens hjemmeside hvis du er i tvil. Ikke bruk numre fra meldinger.
+              Offentlige etater varsler alltid skriftlig i forkant av besøk. Hvis noen banker på uanmeldt og 
+              påstår å være fra kommune eller politi, er det sannsynligvis svindel.
             </p>
           </div>
 
@@ -68,12 +68,12 @@ export default function SafetySection() {
             borderRadius: '12px'
           }}>
             <h3 style={{color: '#a855f7', marginBottom: '1rem', fontSize: '1.2rem'}}>
-              <i className="fas fa-eye" style={{marginRight: '8px'}}></i>
-              Se etter feil i språk og logo
+              <i className="fas fa-file-invoice" style={{marginRight: '8px'}}></i>
+              Sjekk fakturaer og e-poster nøye
             </h3>
             <p style={{margin: 0, fontSize: '0.95rem'}}>
-              Små detaljer avslører ofte falske sider. Sjekk stavemåter, logoer og
-              generell kvalitet på nettsiden. Offisielle sider har høy kvalitet.
+              Ekte kommunale fakturaer sendes som EHF og har riktige kontonummer. Sjekk alltid avsenderadresse 
+              og kontakt økonomiavdelingen ved tvil. Falske fakturaer har ofte feil kontonummer.
             </p>
           </div>
         </div>
@@ -88,7 +88,7 @@ export default function SafetySection() {
         }}>
           <p style={{margin: 0, fontSize: '0.9rem', color: '#888'}}>
             <i className="fas fa-info-circle" style={{marginRight: '5px'}}></i>
-            Denne artikkelen er en del av HoaxHelp-prosjektet, som undersøker hvordan digital svindel rammer lokalsamfunn.
+            Denne artikkelen er basert på politirapporter og kommunale advarsler fra 2023-2025.
           </p>
         </div>
       </div>

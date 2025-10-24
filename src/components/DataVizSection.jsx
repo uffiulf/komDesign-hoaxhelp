@@ -22,28 +22,32 @@ export default function DataVizSection() {
     loadChart();
   }, []);
 
-  const chartData = {
-    labels: ['Falsk energistøtte', 'Helse- og omsorg', 'BankID-tyveri', 'Andre metoder'],
-    datasets: [
-      {
-        data: [40, 25, 20, 15],
-        backgroundColor: [
-          '#ef4444',
-          '#f59e0b', 
-          '#10b981',
-          '#8b5cf6'
-        ],
-        borderColor: [
-          '#dc2626',
-          '#d97706',
-          '#059669',
-          '#7c3aed'
-        ],
-        borderWidth: 2,
-        hoverOffset: 10
-      }
-    ]
-  };
+          const chartData = {
+            labels: ['Politi/Bank-svindel', 'Hjemmehjelp', 'Håndverkere', 'Inspektører', 'Helsepersonell', 'Faktura-svindel'],
+            datasets: [
+              {
+                data: [35, 20, 15, 12, 10, 8],
+                backgroundColor: [
+                  '#ef4444',
+                  '#f59e0b', 
+                  '#10b981',
+                  '#8b5cf6',
+                  '#06b6d4',
+                  '#f97316'
+                ],
+                borderColor: [
+                  '#dc2626',
+                  '#d97706',
+                  '#059669',
+                  '#7c3aed',
+                  '#0891b2',
+                  '#ea580c'
+                ],
+                borderWidth: 2,
+                hoverOffset: 10
+              }
+            ]
+          };
 
   const chartOptions = {
     responsive: true,
@@ -77,9 +81,8 @@ export default function DataVizSection() {
       <div className='left'>
         <h2>Slik ble folk forsøkt lurt</h2>
         <p>
-          De fleste forsøkene etterlignet tjenester fra kommune eller NAV.  
-          Svindlerne utnytter folks ønske om å få hjelp i vanskelige tider, spesielt med energikostnader og økonomisk støtte.  
-          Tallene er hentet fra Nasjonal sikkerhetsmyndighet (NSM) og politiet, september 2024.
+          Basert på politirapporter fra 2023-2025 kan vi se at svindlerne bruker flere forskjellige metoder for å utnytte tillit til offentlige etater. 
+          De fleste forsøkene retter seg mot eldre kvinner, og svindlerne kombinerer telefonbedrageri med fysiske besøk for å virke mer troverdig.
         </p>
         
         <div style={{marginTop: '2rem'}}>
@@ -92,8 +95,8 @@ export default function DataVizSection() {
             background: 'rgba(255,255,255,0.05)',
             borderRadius: '8px'
           }}>
-            <span><i className="fas fa-bolt" style={{color: '#ef4444', marginRight: '8px'}}></i>Falsk energistøtte</span>
-            <span style={{fontWeight: 'bold', color: '#ef4444'}}>40%</span>
+            <span><i className="fas fa-phone" style={{color: '#ef4444', marginRight: '8px'}}></i>Politi/Bank-svindel</span>
+            <span style={{fontWeight: 'bold', color: '#ef4444'}}>35%</span>
           </div>
 
           <div style={{
@@ -105,8 +108,8 @@ export default function DataVizSection() {
             background: 'rgba(255,255,255,0.05)',
             borderRadius: '8px'
           }}>
-            <span><i className="fas fa-heartbeat" style={{color: '#f59e0b', marginRight: '8px'}}></i>Helse- og omsorg</span>
-            <span style={{fontWeight: 'bold', color: '#f59e0b'}}>25%</span>
+            <span><i className="fas fa-home" style={{color: '#f59e0b', marginRight: '8px'}}></i>Hjemmehjelp</span>
+            <span style={{fontWeight: 'bold', color: '#f59e0b'}}>20%</span>
           </div>
 
           <div style={{
@@ -118,8 +121,8 @@ export default function DataVizSection() {
             background: 'rgba(255,255,255,0.05)',
             borderRadius: '8px'
           }}>
-            <span><i className="fas fa-id-card" style={{color: '#10b981', marginRight: '8px'}}></i>BankID-tyveri</span>
-            <span style={{fontWeight: 'bold', color: '#10b981'}}>20%</span>
+            <span><i className="fas fa-hammer" style={{color: '#10b981', marginRight: '8px'}}></i>Håndverkere</span>
+            <span style={{fontWeight: 'bold', color: '#10b981'}}>15%</span>
           </div>
 
           <div style={{
@@ -131,8 +134,34 @@ export default function DataVizSection() {
             background: 'rgba(255,255,255,0.05)',
             borderRadius: '8px'
           }}>
-            <span><i className="fas fa-ellipsis-h" style={{color: '#8b5cf6', marginRight: '8px'}}></i>Andre metoder</span>
-            <span style={{fontWeight: 'bold', color: '#8b5cf6'}}>15%</span>
+            <span><i className="fas fa-search" style={{color: '#8b5cf6', marginRight: '8px'}}></i>Inspektører</span>
+            <span style={{fontWeight: 'bold', color: '#8b5cf6'}}>12%</span>
+          </div>
+
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: '1rem',
+            padding: '0.8rem',
+            background: 'rgba(255,255,255,0.05)',
+            borderRadius: '8px'
+          }}>
+            <span><i className="fas fa-user-md" style={{color: '#06b6d4', marginRight: '8px'}}></i>Helsepersonell</span>
+            <span style={{fontWeight: 'bold', color: '#06b6d4'}}>10%</span>
+          </div>
+
+          <div style={{
+            display: 'flex',
+            justifyContent: 'space-between',
+            alignItems: 'center',
+            marginBottom: '1rem',
+            padding: '0.8rem',
+            background: 'rgba(255,255,255,0.05)',
+            borderRadius: '8px'
+          }}>
+            <span><i className="fas fa-file-invoice" style={{color: '#f97316', marginRight: '8px'}}></i>Faktura-svindel</span>
+            <span style={{fontWeight: 'bold', color: '#f97316'}}>8%</span>
           </div>
         </div>
 
@@ -146,7 +175,7 @@ export default function DataVizSection() {
           fontStyle: 'italic'
         }}>
           <i className="fas fa-chart-bar" style={{marginRight: '5px'}}></i>
-          Tallene er hentet fra Nasjonal sikkerhetsmyndighets oversikt (NSM, september 2024).
+          Tallene er basert på politirapporter og kommunale advarsler fra 2023-2025.
         </p>
       </div>
       <div className='right sticky'>

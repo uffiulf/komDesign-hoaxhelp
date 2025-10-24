@@ -23,28 +23,30 @@ export default function TimelineSection() {
     loadChart();
   }, []);
 
-  const timelineData = {
-    labels: ['27. aug', '29. aug', '14. sep', '29. sep'],
-    datasets: [
-      {
-        label: 'Antall svindelforsøk',
-        data: [
-          { x: '2024-08-27', y: 1 },
-          { x: '2024-08-29', y: 2 },
-          { x: '2024-09-14', y: 3 },
-          { x: '2024-09-29', y: 4 }
-        ],
-        borderColor: '#8b5cf6',
-        backgroundColor: 'rgba(139, 92, 246, 0.1)',
-        borderWidth: 3,
-        pointBackgroundColor: '#8b5cf6',
-        pointBorderColor: '#ffffff',
-        pointBorderWidth: 2,
-        pointRadius: 8,
-        tension: 0.4
-      }
-    ]
-  };
+          const timelineData = {
+            labels: ['jan 2023', 'des 2023', 'aug 2024', 'okt 2024', 'jun 2025', 'feb 2025'],
+            datasets: [
+              {
+                label: 'Antall registrerte saker',
+                data: [
+                  { x: '2023-01-01', y: 1 },
+                  { x: '2023-12-08', y: 2 },
+                  { x: '2024-08-01', y: 3 },
+                  { x: '2024-10-31', y: 4 },
+                  { x: '2025-06-19', y: 5 },
+                  { x: '2025-02-21', y: 6 }
+                ],
+                borderColor: '#8b5cf6',
+                backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                borderWidth: 3,
+                pointBackgroundColor: '#8b5cf6',
+                pointBorderColor: '#ffffff',
+                pointBorderWidth: 2,
+                pointRadius: 8,
+                tension: 0.4
+              }
+            ]
+          };
 
   const options = {
     responsive: true,
@@ -59,15 +61,15 @@ export default function TimelineSection() {
         bodyColor: '#ffffff',
         borderColor: '#8b5cf6',
         borderWidth: 1,
-        callbacks: {
-          title: function(context) {
-            const dates = ['Oslo - 27. august', 'Fredrikstad - 29. august', 'Sarpsborg - 14. september', 'Halden - 29. september'];
-            return dates[context[0].dataIndex];
-          },
-          label: function(context) {
-            return `Antall registrerte forsøk: ${context.parsed.y}`;
-          }
-        }
+                callbacks: {
+                  title: function(context) {
+                    const dates = ['Bjørkelangen - jan 2023', 'Fredrikstad - des 2023', 'Hamar - aug 2024', 'Risør - okt 2024', 'Drøbak - jun 2025', 'Drammen - feb 2025'];
+                    return dates[context[0].dataIndex];
+                  },
+                  label: function(context) {
+                    return `Antall registrerte saker: ${context.parsed.y}`;
+                  }
+                }
       }
     },
     scales: {
@@ -103,11 +105,11 @@ export default function TimelineSection() {
   return (
     <section className='scene'>
       <div className='left'>
-        <h2>En svindel sprer seg som ild</h2>
+        <h2>Svindelen utvikler seg over tid</h2>
         <p>
-          Etter den første hendelsen i Oslo spredte metodene seg raskt til nabokommuner.  
-          Innen to uker ble det registrert over tretti ulike forsøk – mange med identisk språk og logoer.  
-          Politiet beskriver kampanjen som koordinert og profesjonell, med tydelige tegn på organisert kriminalitet.
+          Fra januar 2023 til februar 2025 har politiet registrert en eskalering i svindelmetodene. 
+          Det som startet som enkle telefonbedragerier har utviklet seg til sofistikerte operasjoner 
+          som kombinerer telefon, falske dokumenter og fysiske besøk. De fleste ofre er eldre kvinner.
         </p>
         
         <div style={{marginTop: '2rem'}}>
@@ -121,12 +123,12 @@ export default function TimelineSection() {
             borderLeft: '4px solid #ef4444'
           }}>
             <div style={{marginRight: '1rem'}}>
-              <div style={{fontSize: '1.2rem', fontWeight: 'bold', color: '#ef4444'}}>27. august</div>
+              <div style={{fontSize: '1.2rem', fontWeight: 'bold', color: '#ef4444'}}>jan 2023</div>
             </div>
             <div>
-              <strong>Oslo – Første melding sendt ut</strong>
+              <strong>Bjørkelangen – Falsk el-inspektør</strong>
               <p style={{margin: '0.5rem 0 0 0', fontSize: '0.9rem', color: '#a0a0a0'}}>
-                SMS-kampanje som etterlignet kommunens offisielle meldinger om energistøtte
+                Mann utga seg for å være fra «Lillestrøm elverk» og prøvde å få betaling for tilsyn
               </p>
             </div>
           </div>
@@ -141,12 +143,12 @@ export default function TimelineSection() {
             borderLeft: '4px solid #f59e0b'
           }}>
             <div style={{marginRight: '1rem'}}>
-              <div style={{fontSize: '1.2rem', fontWeight: 'bold', color: '#f59e0b'}}>29. august</div>
+              <div style={{fontSize: '1.2rem', fontWeight: 'bold', color: '#f59e0b'}}>des 2023</div>
             </div>
             <div>
-              <strong>Fredrikstad – Lik SMS-variant oppdaget</strong>
+              <strong>Fredrikstad – Ny kombinasjonsmetode</strong>
               <p style={{margin: '0.5rem 0 0 0', fontSize: '0.9rem', color: '#a0a0a0'}}>
-                Identisk tekst og design, men med lokal kommunelogo og referanser
+                Politiet registrerte at svindlere ikke bare ringer, men også dukker opp fysisk
               </p>
             </div>
           </div>
@@ -161,12 +163,12 @@ export default function TimelineSection() {
             borderLeft: '4px solid #10b981'
           }}>
             <div style={{marginRight: '1rem'}}>
-              <div style={{fontSize: '1.2rem', fontWeight: 'bold', color: '#10b981'}}>14. september</div>
+              <div style={{fontSize: '1.2rem', fontWeight: 'bold', color: '#10b981'}}>aug 2024</div>
             </div>
             <div>
-              <strong>Sarpsborg – E-postkampanje</strong>
+              <strong>Hamar – «Olga-svindel»</strong>
               <p style={{margin: '0.5rem 0 0 0', fontSize: '0.9rem', color: '#a0a0a0'}}>
-                Falske e-poster med «krisehjelp» som påskudd for å stjele personopplysninger
+                Falske politi ringte og sendte «patruljer» for å hente bankkort og koder
               </p>
             </div>
           </div>
@@ -181,12 +183,12 @@ export default function TimelineSection() {
             borderLeft: '4px solid #8b5cf6'
           }}>
             <div style={{marginRight: '1rem'}}>
-              <div style={{fontSize: '1.2rem', fontWeight: 'bold', color: '#8b5cf6'}}>29. september</div>
+              <div style={{fontSize: '1.2rem', fontWeight: 'bold', color: '#8b5cf6'}}>jun 2025</div>
             </div>
             <div>
-              <strong>Halden – Angrep rettet mot eldre</strong>
+              <strong>Drøbak – 32 millioner kroner</strong>
               <p style={{margin: '0.5rem 0 0 0', fontSize: '0.9rem', color: '#a0a0a0'}}>
-                Svindlere utga seg for å være fra helsetjenesten og forsøkte å få tilgang til boliger
+                Falske håndverkere lurte ektepar for 32 millioner kroner med investeringssvindel
               </p>
             </div>
           </div>
@@ -202,7 +204,7 @@ export default function TimelineSection() {
           color: '#e0e0e0'
         }}>
           <i className="fas fa-exclamation-triangle" style={{marginRight: '8px', color: '#ef4444'}}></i>
-          <strong>Politiet beskriver kampanjen som koordinert og profesjonell.</strong>
+          <strong>Politiet advarer om at svindelmetodene blir stadig mer sofistikerte.</strong>
         </p>
       </div>
       <div className='right sticky'>
