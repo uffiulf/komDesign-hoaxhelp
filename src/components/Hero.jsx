@@ -29,7 +29,7 @@ export default function Hero() {
                       borderRadius: '20px 20px 0 0'
                     }}
                   >
-                    <source src="/assets/hero-bg.mp4" type="video/mp4" />
+                    <source src="/assets/6387-191695740_small.mp4" type="video/mp4" />
                     Din nettleser støtter ikke video-elementet.
                   </video>
                   <div style={{
