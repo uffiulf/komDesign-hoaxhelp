@@ -15,29 +15,43 @@ export default function Hero() {
           Denne undersøkelsen avslører hvordan svindelen fungerer – og hvordan du kan beskytte deg selv.
         </p>
       </div>
-      <div className='right sticky'>
-        <div className='card'>
-          <div style={{marginBottom: '1rem'}}>
-            <i className="fas fa-play-circle" style={{fontSize: '3rem', color: '#4ade80'}}></i>
-          </div>
-          <h3 style={{marginBottom: '1rem', color: '#e0e0e0'}}>Bakgrunnsvideo</h3>
-          <p style={{fontSize: '0.9rem', color: '#a0a0a0'}}>
-            Dempet videoklipp av bymiljø<br/>
-            <em>/assets/hero-bg.mp4</em>
-          </p>
-          <div style={{
-            marginTop: '1rem',
-            padding: '1rem',
-            background: 'rgba(255,255,255,0.05)',
-            borderRadius: '8px',
-            fontSize: '0.8rem',
-            color: '#888'
-          }}>
-            <i className="fas fa-video" style={{marginRight: '5px'}}></i>
-            Video-integrasjon kommer snart
-          </div>
-        </div>
-      </div>
+              <div className='right sticky'>
+                <div className='card' style={{padding: '0', overflow: 'hidden'}}>
+                  <video
+                    autoPlay
+                    muted
+                    loop
+                    playsInline
+                    style={{
+                      width: '100%',
+                      height: '300px',
+                      objectFit: 'cover',
+                      borderRadius: '20px 20px 0 0'
+                    }}
+                  >
+                    <source src="/assets/hero-bg.mp4" type="video/mp4" />
+                    Din nettleser støtter ikke video-elementet.
+                  </video>
+                  <div style={{
+                    padding: '1.5rem',
+                    background: 'rgba(255,255,255,0.05)',
+                    borderRadius: '0 0 20px 20px'
+                  }}>
+                    <h3 style={{marginBottom: '0.5rem', color: '#e0e0e0', fontSize: '1.1rem'}}>
+                      <i className="fas fa-video" style={{marginRight: '8px', color: '#4ade80'}}></i>
+                      Bakgrunnsvideo
+                    </h3>
+                    <p style={{fontSize: '0.8rem', color: '#888', margin: 0}}>
+                      Kilde: <a href="https://pixabay.com/videos/people-commerce-shop-busy-mall-6387" 
+                               target="_blank" 
+                               rel="noopener noreferrer"
+                               style={{color: '#4ade80', textDecoration: 'none'}}>
+                        Pixabay - People Commerce Shop
+                      </a>
+                    </p>
+                  </div>
+                </div>
+              </div>
     </section>
   );
 }
