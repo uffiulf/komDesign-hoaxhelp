@@ -4,7 +4,7 @@ import react from '@vitejs/plugin-react'
 // https://vite.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/komDesign-hoaxhelp/',
+  base: process.env.NODE_ENV === 'production' ? '/komDesign-hoaxhelp/' : '/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets'
