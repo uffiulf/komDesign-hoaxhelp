@@ -1,10 +1,28 @@
-import { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, TimeScale } from 'chart.js';
-import { Line } from 'react-chartjs-2';
-import 'chartjs-adapter-date-fns';
-
-ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, TimeScale);
+import { useEffect, useState } from 'react';
 
 export default function TimelineSection() {
+  const [ChartComponent, setChartComponent] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const loadChart = async () => {
+      try {
+        const { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, TimeScale } = await import('chart.js');
+        const { Line } = await import('react-chartjs-2');
+        await import('chartjs-adapter-date-fns');
+
+        ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, TimeScale);
+        setChartComponent({ Line });
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Failed to load chart:', error);
+        setIsLoading(false);
+      }
+    };
+
+    loadChart();
+  }, []);
+
   const timelineData = {
     labels: ['27. aug', '29. aug', '14. sep', '29. sep'],
     datasets: [
@@ -205,7 +223,40 @@ export default function TimelineSection() {
             padding: '1rem',
             marginBottom: '1rem'
           }}>
-            <Line data={timelineData} options={options} />
+            {isLoading ? (
+              <div style={{
+                height: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#888',
+                fontSize: '0.9rem'
+              }}>
+                <i className="fas fa-spinner fa-spin" style={{marginRight: '8px'}}></i>
+                Laster tidslinje...
+              </div>
+            ) : ChartComponent ? (
+              <ChartComponent.Line data={timelineData} options={options} />
+            ) : (
+              <div style={{
+                height: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#888',
+                fontSize: '0.9rem',
+                textAlign: 'center',
+                padding: '2rem'
+              }}>
+                <div>
+                  <i className="fas fa-exclamation-triangle" style={{fontSize: '2rem', color: '#f59e0b', marginBottom: '1rem'}}></i>
+                  <p>Tidslinjen kunne ikke lastes</p>
+                  <p style={{fontSize: '0.8rem', marginTop: '0.5rem'}}>
+                    Sjekk internettforbindelsen din
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
 
           <div style={{

@@ -1,16 +1,35 @@
-import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
-import L from 'leaflet';
-import 'leaflet/dist/leaflet.css';
-
-// Fix for default markers in React Leaflet
-delete L.Icon.Default.prototype._getIconUrl;
-L.Icon.Default.mergeOptions({
-  iconRetinaUrl: require('leaflet/dist/images/marker-icon-2x.png'),
-  iconUrl: require('leaflet/dist/images/marker-icon.png'),
-  shadowUrl: require('leaflet/dist/images/marker-shadow.png'),
-});
+import { useEffect, useState } from 'react';
 
 export default function MapSection() {
+  const [MapComponent, setMapComponent] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const loadMap = async () => {
+      try {
+        const { MapContainer, TileLayer, Marker, Popup } = await import('react-leaflet');
+        const L = await import('leaflet');
+        await import('leaflet/dist/leaflet.css');
+
+        // Fix for default markers in React Leaflet
+        delete L.default.Icon.Default.prototype._getIconUrl;
+        L.default.Icon.Default.mergeOptions({
+          iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
+          iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
+          shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
+        });
+
+        setMapComponent({ MapContainer, TileLayer, Marker, Popup });
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Failed to load map:', error);
+        setIsLoading(false);
+      }
+    };
+
+    loadMap();
+  }, []);
+
   const scamLocations = [
     {
       id: 1,
@@ -91,44 +110,77 @@ export default function MapSection() {
             width: '100%',
             background: 'rgba(255,255,255,0.02)'
           }}>
-            <MapContainer
-              center={[59.4, 11.0]}
-              zoom={8}
-              style={{ height: '100%', width: '100%' }}
-              className="map-container"
-            >
-              <TileLayer
-                url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-                attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-              />
-              {scamLocations.map((location) => (
-                <Marker key={location.id} position={location.position}>
-                  <Popup>
-                    <div style={{color: '#333', minWidth: '200px'}}>
-                      <h4 style={{margin: '0 0 0.5rem 0', color: '#ef4444'}}>
-                        {location.name}
-                      </h4>
-                      <p style={{margin: '0 0 0.5rem 0', fontSize: '0.9rem', fontWeight: 'bold'}}>
-                        {location.date}
-                      </p>
-                      <p style={{margin: '0 0 0.5rem 0', fontSize: '0.85rem'}}>
-                        {location.description}
-                      </p>
-                      <div style={{
-                        padding: '0.3rem 0.6rem',
-                        background: '#ef4444',
-                        color: 'white',
-                        borderRadius: '4px',
-                        fontSize: '0.8rem',
-                        display: 'inline-block'
-                      }}>
-                        {location.type}
+            {isLoading ? (
+              <div style={{
+                height: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#888',
+                fontSize: '0.9rem'
+              }}>
+                <i className="fas fa-spinner fa-spin" style={{marginRight: '8px'}}></i>
+                Laster kart...
+              </div>
+            ) : MapComponent ? (
+              <MapComponent.MapContainer
+                center={[59.4, 11.0]}
+                zoom={8}
+                style={{ height: '100%', width: '100%' }}
+                className="map-container"
+              >
+                <MapComponent.TileLayer
+                  url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
+                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
+                />
+                {scamLocations.map((location) => (
+                  <MapComponent.Marker key={location.id} position={location.position}>
+                    <MapComponent.Popup>
+                      <div style={{color: '#333', minWidth: '200px'}}>
+                        <h4 style={{margin: '0 0 0.5rem 0', color: '#ef4444'}}>
+                          {location.name}
+                        </h4>
+                        <p style={{margin: '0 0 0.5rem 0', fontSize: '0.9rem', fontWeight: 'bold'}}>
+                          {location.date}
+                        </p>
+                        <p style={{margin: '0 0 0.5rem 0', fontSize: '0.85rem'}}>
+                          {location.description}
+                        </p>
+                        <div style={{
+                          padding: '0.3rem 0.6rem',
+                          background: '#ef4444',
+                          color: 'white',
+                          borderRadius: '4px',
+                          fontSize: '0.8rem',
+                          display: 'inline-block'
+                        }}>
+                          {location.type}
+                        </div>
                       </div>
-                    </div>
-                  </Popup>
-                </Marker>
-              ))}
-            </MapContainer>
+                    </MapComponent.Popup>
+                  </MapComponent.Marker>
+                ))}
+              </MapComponent.MapContainer>
+            ) : (
+              <div style={{
+                height: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#888',
+                fontSize: '0.9rem',
+                textAlign: 'center',
+                padding: '2rem'
+              }}>
+                <div>
+                  <i className="fas fa-exclamation-triangle" style={{fontSize: '2rem', color: '#f59e0b', marginBottom: '1rem'}}></i>
+                  <p>Kartet kunne ikke lastes</p>
+                  <p style={{fontSize: '0.8rem', marginTop: '0.5rem'}}>
+                    Sjekk internettforbindelsen din
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
           
           <div style={{

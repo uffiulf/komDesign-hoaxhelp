@@ -1,9 +1,27 @@
-import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
-import { Doughnut } from 'react-chartjs-2';
-
-ChartJS.register(ArcElement, Tooltip, Legend);
+import { useEffect, useState } from 'react';
 
 export default function DataVizSection() {
+  const [ChartComponent, setChartComponent] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const loadChart = async () => {
+      try {
+        const { Chart as ChartJS, ArcElement, Tooltip, Legend } = await import('chart.js');
+        const { Doughnut } = await import('react-chartjs-2');
+
+        ChartJS.register(ArcElement, Tooltip, Legend);
+        setChartComponent({ Doughnut });
+        setIsLoading(false);
+      } catch (error) {
+        console.error('Failed to load chart:', error);
+        setIsLoading(false);
+      }
+    };
+
+    loadChart();
+  }, []);
+
   const chartData = {
     labels: ['Falsk energistøtte', 'Helse- og omsorg', 'BankID-tyveri', 'Andre metoder'],
     datasets: [
@@ -146,7 +164,40 @@ export default function DataVizSection() {
             borderRadius: '12px',
             padding: '1rem'
           }}>
-            <Doughnut data={chartData} options={chartOptions} />
+            {isLoading ? (
+              <div style={{
+                height: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#888',
+                fontSize: '0.9rem'
+              }}>
+                <i className="fas fa-spinner fa-spin" style={{marginRight: '8px'}}></i>
+                Laster graf...
+              </div>
+            ) : ChartComponent ? (
+              <ChartComponent.Doughnut data={chartData} options={chartOptions} />
+            ) : (
+              <div style={{
+                height: '100%',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: '#888',
+                fontSize: '0.9rem',
+                textAlign: 'center',
+                padding: '2rem'
+              }}>
+                <div>
+                  <i className="fas fa-exclamation-triangle" style={{fontSize: '2rem', color: '#f59e0b', marginBottom: '1rem'}}></i>
+                  <p>Grafen kunne ikke lastes</p>
+                  <p style={{fontSize: '0.8rem', marginTop: '0.5rem'}}>
+                    Sjekk internettforbindelsen din
+                  </p>
+                </div>
+              </div>
+            )}
           </div>
           
           <div style={{
