@@ -8,89 +8,16 @@ export default function SafetySection() {
           Her er rådene du bør følge før du trykker på noe – uansett hvor ekte det ser ut:
         </p>
         
-        <div style={{marginTop: '2rem'}}>
-          <div style={{
-            marginBottom: '1.5rem',
-            padding: '1.5rem',
-            background: 'rgba(16, 185, 129, 0.1)',
-            border: '1px solid rgba(16, 185, 129, 0.3)',
-            borderRadius: '12px'
-          }}>
-            <h3 style={{color: '#10b981', marginBottom: '1rem', fontSize: '1.2rem'}}>
-              <i className="fas fa-search" style={{marginRight: '8px'}}></i>
-              Sjekk alltid avsender
-            </h3>
-            <p style={{margin: 0, fontSize: '0.95rem'}}>
-              Offentlige etater sender aldri lenker via SMS. Kontroller alltid avsenderadressen 
-              og sammenlign med offisielle nettsider.
-            </p>
-          </div>
-          
-          <div style={{
-            marginBottom: '1.5rem',
-            padding: '1.5rem',
-            background: 'rgba(239, 68, 68, 0.1)',
-            border: '1px solid rgba(239, 68, 68, 0.3)',
-            borderRadius: '12px'
-          }}>
-            <h3 style={{color: '#ef4444', marginBottom: '1rem', fontSize: '1.2rem'}}>
-              <i className="fas fa-ban" style={{marginRight: '8px'}}></i>
-              Ikke del BankID eller koder
-            </h3>
-            <p style={{margin: 0, fontSize: '0.95rem'}}>
-              Uansett hva du blir fortalt. Legitime organisasjoner vil aldri be om 
-              BankID-informasjon via telefon eller e-post.
-            </p>
-          </div>
-          
-          <div style={{
-            marginBottom: '1.5rem',
-            padding: '1.5rem',
-            background: 'rgba(59, 130, 246, 0.1)',
-            border: '1px solid rgba(59, 130, 246, 0.3)',
-            borderRadius: '12px'
-          }}>
-            <h3 style={{color: '#3b82f6', marginBottom: '1rem', fontSize: '1.2rem'}}>
-              <i className="fas fa-phone" style={{marginRight: '8px'}}></i>
-              Kontakt kommunen direkte
-            </h3>
-            <p style={{margin: 0, fontSize: '0.95rem'}}>
-              Via offisielle nettsider eller telefon. Ring tilbake på offisielle numre 
-              fra kommunens hjemmeside hvis du er i tvil.
-            </p>
-          </div>
-
-          <div style={{
-            marginBottom: '1.5rem',
-            padding: '1.5rem',
-            background: 'rgba(168, 85, 247, 0.1)',
-            border: '1px solid rgba(168, 85, 247, 0.3)',
-            borderRadius: '12px'
-          }}>
-            <h3 style={{color: '#a855f7', marginBottom: '1rem', fontSize: '1.2rem'}}>
-              <i className="fas fa-eye" style={{marginRight: '8px'}}></i>
-              Se etter feil i språk og logo
-            </h3>
-            <p style={{margin: 0, fontSize: '0.95rem'}}>
-              Små detaljer avslører ofte falske sider. Sjekk stavemåter, logoer og 
-              generell kvalitet på nettsiden.
-            </p>
-          </div>
-        </div>
+        <ul>
+          <li><strong>Sjekk alltid avsender</strong> – Offentlige etater sender aldri lenker via SMS.</li>
+          <li><strong>Ikke del BankID eller koder</strong> – Uansett hva du blir fortalt.</li>
+          <li><strong>Kontakt kommunen direkte</strong> – via offisielle nettsider eller telefon.</li>
+          <li><strong>Se etter feil i språk og logo</strong> – Små detaljer avslører ofte falske sider.</li>
+        </ul>
         
-        <div style={{
-          marginTop: '2rem',
-          padding: '1.5rem',
-          background: 'rgba(255, 255, 255, 0.05)',
-          borderRadius: '12px',
-          textAlign: 'center',
-          border: '1px solid rgba(255, 255, 255, 0.1)'
-        }}>
-          <p style={{margin: 0, fontSize: '0.9rem', color: '#888'}}>
-            <i className="fas fa-info-circle" style={{marginRight: '5px'}}></i>
-            Denne artikkelen er en del av HoaxHelp-prosjektet, som undersøker hvordan digital svindel rammer lokalsamfunn.
-          </p>
-        </div>
+        <p>
+          Denne artikkelen er en del av HoaxHelp-prosjektet, som undersøker hvordan digital og fysisk svindel rammer lokalsamfunn.  
+        </p>
       </div>
       <div className='right sticky'>
         <div className='card'>

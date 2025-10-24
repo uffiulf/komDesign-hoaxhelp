@@ -4,15 +4,14 @@ export default function MapSection() {
       <div className='left'>
         <h2>Angrepene startet lokalt</h2>
         <p>
-          På få dager ble lignende hendelser rapportert i flere kommuner i Østlandsområdet.  
-          Kartet viser stedene hvor svindlerne utga seg for å være offentlige aktører.
-        </p>
-        <p>
-          <strong>Registrerte hendelser:</strong>
+          På få dager ble det meldt om både digitale og fysiske svindelforsøk i flere kommuner 
+          i Østlandsområdet. Enkelte fikk falske e-poster eller SMS fra det som så ut som kommunen, 
+          mens andre fikk uventet besøk av personer som utga seg for å være helsepersonell. 
+          Kartet viser hvor hendelsene ble rapportert.
         </p>
         <ul>
-          <li><i className="fas fa-map-marker-alt" style={{color: '#ef4444', marginRight: '8px'}}></i>Oslo – 27. august: Falske SMS-er fra "Oslo Kommune"</li>
-          <li><i className="fas fa-map-marker-alt" style={{color: '#ef4444', marginRight: '8px'}}></i>Sarpsborg – 14. september: "Krisehjelp" via e-post</li>
+          <li><i className="fas fa-map-marker-alt" style={{color: '#ef4444', marginRight: '8px'}}></i>Oslo – 27. august: Falske SMS-er fra «Oslo kommune»</li>
+          <li><i className="fas fa-map-marker-alt" style={{color: '#ef4444', marginRight: '8px'}}></i>Sarpsborg – 14. september: «Krisehjelp» via e-post</li>
           <li><i className="fas fa-map-marker-alt" style={{color: '#ef4444', marginRight: '8px'}}></i>Fredrikstad – 29. september: Falsk søknadsside for strømstøtte</li>
           <li><i className="fas fa-map-marker-alt" style={{color: '#ef4444', marginRight: '8px'}}></i>Halden – 29. september: Svindlere utga seg for å være fra helsetjenesten</li>
         </ul>

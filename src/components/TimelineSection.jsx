@@ -4,104 +4,17 @@ export default function TimelineSection() {
       <div className='left'>
         <h2>En svindel sprer seg som ild</h2>
         <p>
-          Etter første hendelse i Oslo spredte metodene seg raskt.  
-          Innen to uker ble det registrert over 30 ulike forsøk – mange med identisk språk og logoer.
+          Etter den første hendelsen i Oslo spredte metodene seg raskt til nabokommuner.  
+          Innen to uker ble det registrert over tretti ulike forsøk – mange med identisk språk og logoer.  
+          Politiet beskriver kampanjen som koordinert og profesjonell.
         </p>
         
-        <div style={{marginTop: '2rem'}}>
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            marginBottom: '1.5rem',
-            padding: '1rem',
-            background: 'rgba(255,255,255,0.05)',
-            borderRadius: '12px',
-            borderLeft: '4px solid #ef4444'
-          }}>
-            <div style={{marginRight: '1rem'}}>
-              <div style={{fontSize: '1.2rem', fontWeight: 'bold', color: '#ef4444'}}>27. august</div>
-            </div>
-            <div>
-              <strong>Oslo – Første melding sendt ut</strong>
-              <p style={{margin: '0.5rem 0 0 0', fontSize: '0.9rem', color: '#a0a0a0'}}>
-                SMS-kampanje som etterlignet kommunens offisielle meldinger
-              </p>
-            </div>
-          </div>
-
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            marginBottom: '1.5rem',
-            padding: '1rem',
-            background: 'rgba(255,255,255,0.05)',
-            borderRadius: '12px',
-            borderLeft: '4px solid #f59e0b'
-          }}>
-            <div style={{marginRight: '1rem'}}>
-              <div style={{fontSize: '1.2rem', fontWeight: 'bold', color: '#f59e0b'}}>29. august</div>
-            </div>
-            <div>
-              <strong>Fredrikstad – Lik SMS-variant oppdaget</strong>
-              <p style={{margin: '0.5rem 0 0 0', fontSize: '0.9rem', color: '#a0a0a0'}}>
-                Identisk tekst og design, men med lokal kommunelogo
-              </p>
-            </div>
-          </div>
-
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            marginBottom: '1.5rem',
-            padding: '1rem',
-            background: 'rgba(255,255,255,0.05)',
-            borderRadius: '12px',
-            borderLeft: '4px solid #10b981'
-          }}>
-            <div style={{marginRight: '1rem'}}>
-              <div style={{fontSize: '1.2rem', fontWeight: 'bold', color: '#10b981'}}>14. september</div>
-            </div>
-            <div>
-              <strong>Sarpsborg – E-postkampanje</strong>
-              <p style={{margin: '0.5rem 0 0 0', fontSize: '0.9rem', color: '#a0a0a0'}}>
-                Falske e-poster med "krisehjelp" som påskudd
-              </p>
-            </div>
-          </div>
-
-          <div style={{
-            display: 'flex',
-            alignItems: 'center',
-            marginBottom: '1.5rem',
-            padding: '1rem',
-            background: 'rgba(255,255,255,0.05)',
-            borderRadius: '12px',
-            borderLeft: '4px solid #8b5cf6'
-          }}>
-            <div style={{marginRight: '1rem'}}>
-              <div style={{fontSize: '1.2rem', fontWeight: 'bold', color: '#8b5cf6'}}>29. september</div>
-            </div>
-            <div>
-              <strong>Halden – Angrep rettet mot eldre</strong>
-              <p style={{margin: '0.5rem 0 0 0', fontSize: '0.9rem', color: '#a0a0a0'}}>
-                Svindlere utga seg for å være fra helsetjenesten
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <p style={{
-          marginTop: '2rem',
-          padding: '1rem',
-          background: 'rgba(239, 68, 68, 0.1)',
-          border: '1px solid rgba(239, 68, 68, 0.3)',
-          borderRadius: '8px',
-          fontSize: '0.95rem',
-          color: '#e0e0e0'
-        }}>
-          <i className="fas fa-exclamation-triangle" style={{marginRight: '8px', color: '#ef4444'}}></i>
-          <strong>Politiet beskriver kampanjen som koordinert og profesjonell.</strong>
-        </p>
+        <ul>
+          <li><strong>27. august:</strong> Oslo – Første falske SMS sendt ut</li>
+          <li><strong>29. august:</strong> Fredrikstad – Lik variant oppdaget</li>
+          <li><strong>14. september:</strong> Sarpsborg – E-postkampanje</li>
+          <li><strong>29. september:</strong> Halden – Fysiske svindlere utga seg for å være helsepersonell</li>
+        </ul>
       </div>
       <div className='right sticky'>
         <div className='card'>
