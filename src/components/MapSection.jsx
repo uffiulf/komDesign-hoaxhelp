@@ -1,85 +1,4 @@
-import { useEffect, useState } from 'react';
-
 export default function MapSection() {
-  const [MapComponent, setMapComponent] = useState(null);
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const loadMap = async () => {
-      try {
-        const { MapContainer, TileLayer, Marker, Popup } = await import('react-leaflet');
-        const L = await import('leaflet');
-        await import('leaflet/dist/leaflet.css');
-
-        // Fix for default markers in React Leaflet
-        delete L.default.Icon.Default.prototype._getIconUrl;
-        L.default.Icon.Default.mergeOptions({
-          iconRetinaUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon-2x.png',
-          iconUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-icon.png',
-          shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
-        });
-
-        setMapComponent({ MapContainer, TileLayer, Marker, Popup });
-        setIsLoading(false);
-      } catch (error) {
-        console.error('Failed to load map:', error);
-        setIsLoading(false);
-      }
-    };
-
-    loadMap();
-  }, []);
-
-          const scamLocations = [
-            {
-              id: 1,
-              name: 'Drammen',
-              position: [59.7440, 10.2045],
-              date: '21. feb 2025',
-              description: 'Falsk hjemmehjelper stjal kontanter og smykker fra 80-årig kvinne',
-              type: 'Hjemmehjelp-svindel'
-            },
-            {
-              id: 2,
-              name: 'Drøbak',
-              position: [59.6639, 10.6306],
-              date: '19. jun 2025',
-              description: 'Falske håndverkere lurte ektepar for 32 millioner kroner',
-              type: 'Håndverker-svindel'
-            },
-            {
-              id: 3,
-              name: 'Hamar',
-              position: [60.7945, 11.0680],
-              date: 'aug 2024',
-              description: '«Olga-svindel»: Falske politi ringte og sendte patruljer',
-              type: 'Politi-svindel'
-            },
-            {
-              id: 4,
-              name: 'Fredrikstad',
-              position: [59.2167, 10.9500],
-              date: '8. des 2023',
-              description: 'Kombinert telefon- og besøksmetode for BankID-tyveri',
-              type: 'BankID-svindel'
-            },
-            {
-              id: 5,
-              name: 'Bjørkelangen',
-              position: [59.8833, 11.5667],
-              date: 'jan 2023',
-              description: 'Falsk el-inspektør fra «Lillestrøm elverk»',
-              type: 'Inspektør-svindel'
-            },
-            {
-              id: 6,
-              name: 'Risør',
-              position: [58.7206, 9.2342],
-              date: '31. okt 2024',
-              description: 'Falske kommunale fakturaer med feil kontonummer',
-              type: 'Faktura-svindel'
-            }
-          ];
 
   return (
     <section className='scene'>
@@ -103,111 +22,22 @@ export default function MapSection() {
         </p>
       </div>
       <div className='right sticky'>
-        <div className='card' style={{padding: '0', overflow: 'hidden'}}>
-          <div style={{
-            padding: '1.5rem',
-            background: 'rgba(255,255,255,0.05)',
-            borderRadius: '20px 20px 0 0'
-          }}>
-            <h3 style={{marginBottom: '0.5rem', color: '#e0e0e0', fontSize: '1.1rem'}}>
-              <i className="fas fa-map-marked-alt" style={{marginRight: '8px', color: '#ef4444'}}></i>
-              Interaktivt kart
-            </h3>
-            <p style={{fontSize: '0.8rem', color: '#888', margin: 0}}>
-              Klikk på markørene for å se detaljer om hver hendelse
-            </p>
-          </div>
-          
-          <div style={{
-            height: '400px',
-            width: '100%',
-            background: 'rgba(255,255,255,0.02)'
-          }}>
-            {isLoading ? (
-              <div style={{
-                height: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#888',
-                fontSize: '0.9rem'
-              }}>
-                <i className="fas fa-spinner fa-spin" style={{marginRight: '8px'}}></i>
-                Laster kart...
-              </div>
-            ) : MapComponent ? (
-              <MapComponent.MapContainer
-                center={[59.4, 11.0]}
-                zoom={8}
-                style={{ height: '100%', width: '100%' }}
-                className="map-container"
-              >
-                <MapComponent.TileLayer
-                  url="https://{s}.basemaps.cartocdn.com/dark_all/{z}/{x}/{y}{r}.png"
-                  attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>'
-                />
-                {scamLocations.map((location) => (
-                  <MapComponent.Marker key={location.id} position={location.position}>
-                    <MapComponent.Popup>
-                      <div style={{color: '#333', minWidth: '200px'}}>
-                        <h4 style={{margin: '0 0 0.5rem 0', color: '#ef4444'}}>
-                          {location.name}
-                        </h4>
-                        <p style={{margin: '0 0 0.5rem 0', fontSize: '0.9rem', fontWeight: 'bold'}}>
-                          {location.date}
-                        </p>
-                        <p style={{margin: '0 0 0.5rem 0', fontSize: '0.85rem'}}>
-                          {location.description}
-                        </p>
-                        <div style={{
-                          padding: '0.3rem 0.6rem',
-                          background: '#ef4444',
-                          color: 'white',
-                          borderRadius: '4px',
-                          fontSize: '0.8rem',
-                          display: 'inline-block'
-                        }}>
-                          {location.type}
-                        </div>
-                      </div>
-                    </MapComponent.Popup>
-                  </MapComponent.Marker>
-                ))}
-              </MapComponent.MapContainer>
-            ) : (
-              <div style={{
-                height: '100%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: '#888',
-                fontSize: '0.9rem',
-                textAlign: 'center',
-                padding: '2rem'
-              }}>
-                <div>
-                  <i className="fas fa-exclamation-triangle" style={{fontSize: '2rem', color: '#f59e0b', marginBottom: '1rem'}}></i>
-                  <p>Kartet kunne ikke lastes</p>
-                  <p style={{fontSize: '0.8rem', marginTop: '0.5rem'}}>
-                    Sjekk internettforbindelsen din
-                  </p>
-                </div>
-              </div>
-            )}
-          </div>
-          
-          <div style={{
-            padding: '1rem',
-            background: 'rgba(255,255,255,0.05)',
-            borderRadius: '0 0 20px 20px',
-            fontSize: '0.8rem',
-            color: '#888',
-            textAlign: 'center'
-          }}>
-            <i className="fas fa-info-circle" style={{marginRight: '5px'}}></i>
-            Data basert på rapporter fra kommuner og politiet, høst 2024
-          </div>
+        <div className="map-embed" role="region" aria-label="Interaktivt kart over rapporterte svindelhendelser">
+          <iframe
+            src="https://infowiz.no/embed/svindel-kart-2023-2025"
+            title="Interaktivt kart – Svindelhendelser"
+            loading="lazy"
+            width="100%"
+            height="100%"
+            style={{ border: "0" }}
+            referrerPolicy="no-referrer-when-downgrade"
+          />
+          <noscript>
+            <p>Interaktivt kart krever JavaScript. Aktiver JavaScript eller se stillbildet nedenfor.</p>
+            <img src="/map-placeholder.jpg" alt="Kart over svindelhendelser" style={{width:"100%", borderRadius:"14px"}}/>
+          </noscript>
         </div>
+        <p className="caption">Kilde: Kommunale varsler og NSM. Noen hendelser er digitale, andre fysiske.</p>
       </div>
     </section>
   );
