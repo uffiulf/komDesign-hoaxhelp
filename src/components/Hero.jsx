@@ -4,15 +4,19 @@ export default function Hero() {
       <div className='left'>
         <h1>Når hjelpen ikke er ekte</h1>
         <p>
-          En ny bølge av svindelforsøk rammer folk i hele Norge – både digitalt og fysisk. 
+          En ny bølge av sofistikerte svindelforsøk rammer folk i hele Norge – både digitalt og fysisk. 
           Noen får e-poster eller SMS fra det som ser ut som kommunen, NAV eller helsevesenet. 
           Andre får uventet besøk av personer som utgir seg for å være hjemmehjelpere eller inspektører. 
-          Felles for dem alle er at svindlerne spiller på tillit – og mange lar seg lure. 
-          <br/><br/>
-          I løpet av sensommeren ble flere kommuner kontaktet av innbyggere som trodde de hadde fått hjelp. 
+          Felles for dem alle er at svindlerne spiller på tillit og nød – og mange lar seg lure.
+        </p>
+        <p>
+          I løpet av sensommeren 2024 ble flere kommuner kontaktet av innbyggere som trodde de hadde fått hjelp. 
           I virkeligheten ble både personopplysninger og BankID-informasjon stjålet. 
-          <br/><br/>
-          Denne undersøkelsen avslører hvordan svindelen fungerer – og hvordan du kan beskytte deg selv.
+          Svindlerne bruker falske logoer, etterligner offisielle kommunikasjoner og utnytter folks ønske om å få hjelp.
+        </p>
+        <p>
+          <i className="fas fa-exclamation-triangle" style={{color: '#fbbf24', marginRight: '8px'}}></i>
+          <strong>Denne undersøkelsen avslører hvordan svindelen fungerer – og hvordan du kan beskytte deg selv.</strong>
         </p>
       </div>
               <div className='right sticky'>

@@ -5,16 +5,19 @@ export default function MapSection() {
         <h2>Angrepene startet lokalt</h2>
         <p>
           På få dager ble det meldt om både digitale og fysiske svindelforsøk i flere kommuner 
-          i Østlandsområdet. Enkelte fikk falske e-poster eller SMS fra det som så ut som kommunen, 
-          mens andre fikk uventet besøk av personer som utga seg for å være helsepersonell. 
-          Kartet viser hvor hendelsene ble rapportert.
+          i Østlandsområdet. Svindlerne brukte lokale referanser og kommunespesifikke detaljer 
+          for å virke troverdig. Kartet viser hvor hendelsene ble rapportert og spredningen av metodene.
         </p>
         <ul>
-          <li><i className="fas fa-map-marker-alt" style={{color: '#ef4444', marginRight: '8px'}}></i>Oslo – 27. august: Falske SMS-er fra «Oslo kommune»</li>
-          <li><i className="fas fa-map-marker-alt" style={{color: '#ef4444', marginRight: '8px'}}></i>Sarpsborg – 14. september: «Krisehjelp» via e-post</li>
-          <li><i className="fas fa-map-marker-alt" style={{color: '#ef4444', marginRight: '8px'}}></i>Fredrikstad – 29. september: Falsk søknadsside for strømstøtte</li>
-          <li><i className="fas fa-map-marker-alt" style={{color: '#ef4444', marginRight: '8px'}}></i>Halden – 29. september: Svindlere utga seg for å være fra helsetjenesten</li>
+          <li><i className="fas fa-map-marker-alt" style={{color: '#ef4444', marginRight: '8px'}}></i><strong>Oslo – 27. august:</strong> Falske SMS-er om «energistøtte» fra «Oslo kommune»</li>
+          <li><i className="fas fa-map-marker-alt" style={{color: '#ef4444', marginRight: '8px'}}></i><strong>Sarpsborg – 14. september:</strong> E-post om «krisehjelp» med kommunelogo</li>
+          <li><i className="fas fa-map-marker-alt" style={{color: '#ef4444', marginRight: '8px'}}></i><strong>Fredrikstad – 29. september:</strong> Falsk søknadsside for strømstøtte med BankID-login</li>
+          <li><i className="fas fa-map-marker-alt" style={{color: '#ef4444', marginRight: '8px'}}></i><strong>Halden – 29. september:</strong> Fysiske svindlere utga seg for å være fra helsetjenesten</li>
         </ul>
+        <p style={{fontSize: '0.9rem', color: '#888', marginTop: '1rem', fontStyle: 'italic'}}>
+          <i className="fas fa-info-circle" style={{marginRight: '5px'}}></i>
+          Data basert på rapporter fra kommuner og politiet, høst 2024
+        </p>
         <p style={{fontSize: '0.9rem', color: '#888', marginTop: '1rem'}}>
           <i className="fas fa-info-circle" style={{marginRight: '5px'}}></i>
           Kartdata fra Infowiz-visualisering
