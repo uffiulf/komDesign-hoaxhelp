@@ -9,7 +9,6 @@ export default function TimelineSection() {
       try {
         await import('chart.js/auto');
         const reactChartjs2 = await import('react-chartjs-2');
-        await import('chartjs-adapter-date-fns');
 
         setChartComponent({ Line: reactChartjs2.Line });
         setIsLoading(false);
@@ -27,14 +26,7 @@ export default function TimelineSection() {
     datasets: [
       {
         label: 'Antall registrerte saker',
-        data: [
-          { x: '2023-01-01', y: 1 },
-          { x: '2023-12-08', y: 2 },
-          { x: '2024-08-01', y: 3 },
-          { x: '2024-10-31', y: 4 },
-          { x: '2025-06-19', y: 5 },
-          { x: '2025-02-21', y: 6 }
-        ],
+        data: [1, 2, 3, 4, 5, 6],
         borderColor: '#8b5cf6',
         backgroundColor: 'rgba(139, 92, 246, 0.1)',
         borderWidth: 3,
@@ -42,7 +34,8 @@ export default function TimelineSection() {
         pointBorderColor: '#ffffff',
         pointBorderWidth: 2,
         pointRadius: 8,
-        tension: 0.4
+        tension: 0.4,
+        fill: true
       }
     ]
   };
@@ -73,13 +66,6 @@ export default function TimelineSection() {
     },
     scales: {
       x: {
-        type: 'time',
-        time: {
-          unit: 'day',
-          displayFormats: {
-            day: 'dd. MMM'
-          }
-        },
         grid: {
           color: 'rgba(255, 255, 255, 0.1)'
         },
@@ -89,7 +75,7 @@ export default function TimelineSection() {
       },
       y: {
         beginAtZero: true,
-        max: 5,
+        max: 7,
         grid: {
           color: 'rgba(255, 255, 255, 0.1)'
         },
