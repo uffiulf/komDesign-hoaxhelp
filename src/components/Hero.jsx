@@ -30,7 +30,7 @@ export default function Hero() {
                       borderRadius: '20px 20px 0 0'
                     }}
                   >
-                    <source src="/komDesign-hoaxhelp/assets/6387-191695740_small.mp4" type="video/mp4" />
+                    <source src="/komDesign-hoaxhelp/assets/Fake_Police_Scam_Video_Generated.mp4" type="video/mp4" />
                     Din nettleser støtter ikke video-elementet.
                   </video>
                   <div style={{
@@ -43,12 +43,7 @@ export default function Hero() {
                       Bakgrunnsvideo
                     </h3>
                     <p style={{fontSize: '0.8rem', color: '#888', margin: 0}}>
-                      Kilde: <a href="https://pixabay.com/videos/people-commerce-shop-busy-mall-6387" 
-                               target="_blank" 
-                               rel="noopener noreferrer"
-                               style={{color: '#4ade80', textDecoration: 'none'}}>
-                        Pixabay - People Commerce Shop
-                      </a>
+                      Kilde: Fake Police Scam Video (AI-generert)
                     </p>
                   </div>
                 </div>
