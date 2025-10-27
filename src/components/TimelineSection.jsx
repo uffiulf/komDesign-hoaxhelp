@@ -7,11 +7,10 @@ export default function TimelineSection() {
   useEffect(() => {
     const loadChart = async () => {
       try {
-        const { Chart as ChartJS, CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, TimeScale } = await import('chart.js');
+        await import('chart.js/auto');
         const { Line } = await import('react-chartjs-2');
         await import('chartjs-adapter-date-fns');
 
-        ChartJS.register(CategoryScale, LinearScale, PointElement, LineElement, Title, Tooltip, Legend, TimeScale);
         setChartComponent({ Line });
         setIsLoading(false);
       } catch (error) {
@@ -23,30 +22,30 @@ export default function TimelineSection() {
     loadChart();
   }, []);
 
-          const timelineData = {
-            labels: ['jan 2023', 'des 2023', 'aug 2024', 'okt 2024', 'jun 2025', 'feb 2025'],
-            datasets: [
-              {
-                label: 'Antall registrerte saker',
-                data: [
-                  { x: '2023-01-01', y: 1 },
-                  { x: '2023-12-08', y: 2 },
-                  { x: '2024-08-01', y: 3 },
-                  { x: '2024-10-31', y: 4 },
-                  { x: '2025-06-19', y: 5 },
-                  { x: '2025-02-21', y: 6 }
-                ],
-                borderColor: '#8b5cf6',
-                backgroundColor: 'rgba(139, 92, 246, 0.1)',
-                borderWidth: 3,
-                pointBackgroundColor: '#8b5cf6',
-                pointBorderColor: '#ffffff',
-                pointBorderWidth: 2,
-                pointRadius: 8,
-                tension: 0.4
-              }
-            ]
-          };
+  const timelineData = {
+    labels: ['jan 2023', 'des 2023', 'aug 2024', 'okt 2024', 'jun 2025', 'feb 2025'],
+    datasets: [
+      {
+        label: 'Antall registrerte saker',
+        data: [
+          { x: '2023-01-01', y: 1 },
+          { x: '2023-12-08', y: 2 },
+          { x: '2024-08-01', y: 3 },
+          { x: '2024-10-31', y: 4 },
+          { x: '2025-06-19', y: 5 },
+          { x: '2025-02-21', y: 6 }
+        ],
+        borderColor: '#8b5cf6',
+        backgroundColor: 'rgba(139, 92, 246, 0.1)',
+        borderWidth: 3,
+        pointBackgroundColor: '#8b5cf6',
+        pointBorderColor: '#ffffff',
+        pointBorderWidth: 2,
+        pointRadius: 8,
+        tension: 0.4
+      }
+    ]
+  };
 
   const options = {
     responsive: true,
@@ -61,15 +60,15 @@ export default function TimelineSection() {
         bodyColor: '#ffffff',
         borderColor: '#8b5cf6',
         borderWidth: 1,
-                callbacks: {
-                  title: function(context) {
-                    const dates = ['Bjørkelangen - jan 2023', 'Fredrikstad - des 2023', 'Hamar - aug 2024', 'Risør - okt 2024', 'Drøbak - jun 2025', 'Drammen - feb 2025'];
-                    return dates[context[0].dataIndex];
-                  },
-                  label: function(context) {
-                    return `Antall registrerte saker: ${context.parsed.y}`;
-                  }
-                }
+        callbacks: {
+          title: function(context) {
+            const dates = ['Bjørkelangen - jan 2023', 'Fredrikstad - des 2023', 'Hamar - aug 2024', 'Risør - okt 2024', 'Drøbak - jun 2025', 'Drammen - feb 2025'];
+            return dates[context[0].dataIndex];
+          },
+          label: function(context) {
+            return `Antall registrerte saker: ${context.parsed.y}`;
+          }
+        }
       }
     },
     scales: {

@@ -7,10 +7,9 @@ export default function DataVizSection() {
   useEffect(() => {
     const loadChart = async () => {
       try {
-        const { Chart as ChartJS, ArcElement, Tooltip, Legend } = await import('chart.js');
+        const ChartJS = await import('chart.js/auto');
         const { Doughnut } = await import('react-chartjs-2');
 
-        ChartJS.register(ArcElement, Tooltip, Legend);
         setChartComponent({ Doughnut });
         setIsLoading(false);
       } catch (error) {
@@ -22,32 +21,32 @@ export default function DataVizSection() {
     loadChart();
   }, []);
 
-          const chartData = {
-            labels: ['Politi/Bank-svindel', 'Hjemmehjelp', 'Håndverkere', 'Inspektører', 'Helsepersonell', 'Faktura-svindel'],
-            datasets: [
-              {
-                data: [35, 20, 15, 12, 10, 8],
-                backgroundColor: [
-                  '#ef4444',
-                  '#f59e0b', 
-                  '#10b981',
-                  '#8b5cf6',
-                  '#06b6d4',
-                  '#f97316'
-                ],
-                borderColor: [
-                  '#dc2626',
-                  '#d97706',
-                  '#059669',
-                  '#7c3aed',
-                  '#0891b2',
-                  '#ea580c'
-                ],
-                borderWidth: 2,
-                hoverOffset: 10
-              }
-            ]
-          };
+  const chartData = {
+    labels: ['Politi/Bank-svindel', 'Hjemmehjelp', 'Håndverkere', 'Inspektører', 'Helsepersonell', 'Faktura-svindel'],
+    datasets: [
+      {
+        data: [35, 20, 15, 12, 10, 8],
+        backgroundColor: [
+          '#ef4444',
+          '#f59e0b', 
+          '#10b981',
+          '#8b5cf6',
+          '#06b6d4',
+          '#f97316'
+        ],
+        borderColor: [
+          '#dc2626',
+          '#d97706',
+          '#059669',
+          '#7c3aed',
+          '#0891b2',
+          '#ea580c'
+        ],
+        borderWidth: 2,
+        hoverOffset: 10
+      }
+    ]
+  };
 
   const chartOptions = {
     responsive: true,
@@ -76,6 +75,7 @@ export default function DataVizSection() {
       }
     }
   };
+
   return (
     <section className='scene'>
       <div className='left'>
