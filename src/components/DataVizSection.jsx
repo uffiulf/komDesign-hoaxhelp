@@ -7,10 +7,10 @@ export default function DataVizSection() {
   useEffect(() => {
     const loadChart = async () => {
       try {
-        const ChartJS = await import('chart.js/auto');
-        const { Doughnut } = await import('react-chartjs-2');
-
-        setChartComponent({ Doughnut });
+        await import('chart.js/auto');
+        const reactChartjs2 = await import('react-chartjs-2');
+        
+        setChartComponent({ Doughnut: reactChartjs2.Doughnut });
         setIsLoading(false);
       } catch (error) {
         console.error('Failed to load chart:', error);

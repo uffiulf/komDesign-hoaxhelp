@@ -7,7 +7,7 @@ export default function MapSection() {
   useEffect(() => {
     const loadMap = async () => {
       try {
-        const { MapContainer, TileLayer, Marker, Popup } = await import('react-leaflet');
+        const reactLeaflet = await import('react-leaflet');
         const L = await import('leaflet');
         await import('leaflet/dist/leaflet.css');
 
@@ -19,7 +19,12 @@ export default function MapSection() {
           shadowUrl: 'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.7.1/images/marker-shadow.png',
         });
 
-        setMapComponent({ MapContainer, TileLayer, Marker, Popup });
+        setMapComponent({
+          MapContainer: reactLeaflet.MapContainer,
+          TileLayer: reactLeaflet.TileLayer,
+          Marker: reactLeaflet.Marker,
+          Popup: reactLeaflet.Popup
+        });
         setIsLoading(false);
       } catch (error) {
         console.error('Failed to load map:', error);

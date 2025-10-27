@@ -8,10 +8,10 @@ export default function TimelineSection() {
     const loadChart = async () => {
       try {
         await import('chart.js/auto');
-        const { Line } = await import('react-chartjs-2');
+        const reactChartjs2 = await import('react-chartjs-2');
         await import('chartjs-adapter-date-fns');
 
-        setChartComponent({ Line });
+        setChartComponent({ Line: reactChartjs2.Line });
         setIsLoading(false);
       } catch (error) {
         console.error('Failed to load chart:', error);
